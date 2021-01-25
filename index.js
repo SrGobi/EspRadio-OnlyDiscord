@@ -36,7 +36,13 @@ fs.readdir('./events/', (err, files) => {
 /////////////////////////////////////////////////////  STATUS  /////////////////////////////////////////////////////
 discordclient.on("ready", () => {
     console.log('[DISCORD]', `Estoy en linea, mi nombre es ${discordclient.user.username}`);
-    discordclient.user.setActivity(status, {type: "WATCHING"});
+    discordclient.user.setActivity({
+        status: "online",  // You can show online, idle... Do not disturb is dnd
+        game: {
+            name: "ESP CUSTOMS",  // The message shown
+            type: "LISTENING" // PLAYING, WATCHING, LISTENING, STREAMING,
+        }
+    });
 });
 /////////////////////////////////////////////////////  Token Bot Developer  /////////////////////////////////////////////////////
 discordclient.login(process.env.TOKEN);
