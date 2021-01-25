@@ -36,15 +36,7 @@ fs.readdir('./events/', (err, files) => {
 /////////////////////////////////////////////////////  STATUS  /////////////////////////////////////////////////////
 discordclient.on("ready", () => {
     console.log('[DISCORD]', `Estoy en linea, mi nombre es ${discordclient.user.username}`);
-    let statuses = [
-        `${discordclient.guilds.cache.size} servers!`,
-        "/comandos",
-        `over ${discordclient.users.cache.size} users!`
-    ]
-    setInterval(function() {
-        let status = statuses[Math.floor(Math.random() * statuses.length)];
-        discordclient.user.setActivity(status, {type: "WATCHING"});
-    }, 20000)
+    discordclient.user.setActivity(status, {type: "WATCHING"});
 });
 /////////////////////////////////////////////////////  Token Bot Developer  /////////////////////////////////////////////////////
 discordclient.login(process.env.TOKEN);
