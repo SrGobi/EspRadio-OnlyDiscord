@@ -36,7 +36,7 @@ fs.readdir('./events/', (err, files) => {
 /////////////////////////////////////////////////////  STATUS  /////////////////////////////////////////////////////
 discordclient.on("ready", () => {
     console.log('[DISCORD]', `Estoy en linea, mi nombre es ${discordclient.user.username}`);
-    discordclient.user.setActivity({
+    discordclient.user.setPresence({
         status: "online",  // You can show online, idle... Do not disturb is dnd
         game: {
             name: "ESP CUSTOMS",  // The message shown
