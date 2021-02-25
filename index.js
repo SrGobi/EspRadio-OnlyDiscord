@@ -3,7 +3,18 @@ const discordclient = new Discord.Client({disableEveryone: false});
 const Distube = require('distube');
 const fs = require('fs');
 const { config } = require('dotenv');
-discordclient.distube = new Distube(discordclient, { searchSongs: false, emitNewSongOnly: true });
+discordclient.distube = new Distube(discordclient, {
+    youtubeCookie: config.cookie,
+    searchSongs: true,
+    emitNewSongOnly: true,
+    highWaterMark: 1<<24,
+    leaveOnEmpty: false,
+    leaveOnFinish: false,
+    leaveOnStop: true,
+    searchSongs: false,
+    youtubeDL: true,
+    updateYouTubeDL: false
+})
 discordclient.distube
 .on("playSong", (message, queue, song) => message.channel.send(
     `**Escuchando** 🎶 \`${song.name}\` - \`${song.formattedDuration}\``
@@ -11,6 +22,9 @@ discordclient.distube
 .on("addSong", (message, queue, song) => message.channel.send(
     `**Agregada** 👍 ${song.name} - \`${song.formattedDuration}\``
 ))
+.on("empty", message => {message.channel.send(
+    "El canal está vacío. Sin embargo esperaré 24/7"
+)})
 discordclient.commands = new Discord.Collection();
 discordclient.aliases = new Discord.Collection();
 discordclient.categories = fs.readdirSync('./commands/');
@@ -36,13 +50,16 @@ fs.readdir('./events/', (err, files) => {
 /////////////////////////////////////////////////////  STATUS  /////////////////////////////////////////////////////
 discordclient.on("ready", () => {
     console.log('[DISCORD]', `Estoy en linea, mi nombre es ${discordclient.user.username}`);
-    discordclient.user.setPresence({
-        status: "online",  // You can show online, idle... Do not disturb is dnd
-        game: {
-            name: "ESP CUSTOMS",  // The message shown
-            type: "LISTENING" // PLAYING, WATCHING, LISTENING, STREAMING,
-        }
-    });
+    let statuses = [
+        "Esp Customs Radio",
+        "/play",
+        "Radio 24/7 Free",
+        "https://esp-customs.herokuapp.com"
+    ]
+    setInterval(function() {
+        let status = statuses[Math.floor(Math.random() * statuses.length)];
+        discordclient.user.setActivity(status, {type: "LISTENING"});
+    }, 20000)
 });
 /////////////////////////////////////////////////////  Token Bot Developer  /////////////////////////////////////////////////////
 discordclient.login(process.env.TOKEN);

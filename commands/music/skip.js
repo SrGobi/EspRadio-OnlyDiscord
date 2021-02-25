@@ -16,7 +16,7 @@ module.exports = {
                 const embed = new Discord.MessageEmbed()
                     .setAuthor(message.guild.name, discordclient.user.displayAvatarURL())
                     .setColor(process.env.COLOR)
-                    .setThumbnail(discordclient.user.displayAvatarURL())
+                    .setThumbnail(discordclient.user.displayAvatarURL({ dynamic: true, size: 1024 }))
                     .setDescription("⏭️  **|**  Se ha utilizado el comando omitir!")
                     .setFooter('Created by SrGobi | BLD SRGOBI#0001 | patreon.com/espcustoms')
                 message.channel.send(embed);    

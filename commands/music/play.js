@@ -9,6 +9,7 @@ module.exports = {
     usage: `play`,
     run: async (discordclient, message, args) => {
         if(message.member.hasPermission('SPEAK')){
+            if (!message.member.voice.channel) return message.channel.send('Debes estar en un canal de voz para usar este comando.');
             const music = args.join(' ');
             discordclient.distube.play(message, music)
         }else{
