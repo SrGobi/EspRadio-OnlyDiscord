@@ -7,16 +7,22 @@ module.exports = {
     description: 'Puedes indicar los títulos de las canciones o poner los enlaces',
     aliases : ["p","music"],
     usage: `play`,
-    run: async (discordclient, message, args) => {
-        if(message.member.hasPermission('SPEAK')){
-            if (!message.member.voice.channel) return message.channel.send('Debes estar en un canal de voz para usar este comando.');
+    /**
+     * @param {Discord.Client} client 
+     * @param {Discord.Message} message 
+     * @param {Distube.default} distube
+     * @param {String[]} args 
+     */
+    run: async (client, message, args) => {
+        if(message.member.permissions.has('SPEAK')){
+            if (!message.member.voice.channel) return message.channel.send({ content: 'Debes estar en un canal de voz para usar este comando.' });
             const music = args.join(' ');
-            discordclient.distube.play(message, music)
+            client.distube.play(message, music)
         }else{
-            let embed = new Discord.MessageEmbed()
+            let Embed_Error = new Discord.MessageEmbed()
                 .setColor('#EF0B0B')
                 .setTitle(`⛔ **No tienes permiso para usar este comando** ⛔`)
-            message.channel.send(embed).then(m => m.delete({timeout: 5000}))
+            message.channel.send({ embeds: [Embed_Error] }).then(m => m.delete({timeout: 5000}))
         }
     }
 }

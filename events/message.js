@@ -1,12 +1,20 @@
+const Discord = require('discord.js');
+const Distube = require('distube');
 
-module.exports = async (discordclient, message) => {
+/**
+ * 
+ * @param {Discord.Client} client 
+ * @param {Discord.Message} message
+ * @returns 
+ */
+module.exports = async (client, message) => {
     if (message.author.bot) return;
 
     const prefix = process.env.PREFIX;
 
     // si la gente nos menciona, cuéntales sobre nuestro prefijo
 	if(message.mentions.users.size){
-		if(message.mentions.users.first().id == discordclient.user.id){
+		if(message.mentions.users.first().id == client.user.id){
 			return message.reply(`Mi prefijo es \`\`${prefix}\`\``)
 		}
     }
@@ -20,11 +28,11 @@ module.exports = async (discordclient, message) => {
 
     if (command.length === 0) return;
 
-    let commandFile = discordclient.commands.get(command);
+    let commandFile = client.commands.get(command);
 
-    if (!commandFile) commandFile = discordclient.commands.get(discordclient.aliases.get(command));
+    if (!commandFile) commandFile = client.commands.get(client.aliases.get(command));
 
     if (commandFile){
-        commandFile.run(discordclient, message, args);
+        commandFile.run(client, message, args);
     }
 };
