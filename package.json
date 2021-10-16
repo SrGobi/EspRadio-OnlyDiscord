@@ -15,6 +15,10 @@
   },
   "author": "SrGobi",
   "license": "ISC",
+  "engines": {
+    "node": "16.x",
+    "npm": "7.x"
+  },
   "dependencies": {
     "@discordjs/opus": "^0.6.0",
     "ansi-regex": "^6.0.1",
