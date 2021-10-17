@@ -15,7 +15,7 @@ client.distube.on("addList", (queue, playlist) => {
 });
 const status = (queue) => `Volumen: \`${queue.volume}%\` | Loop: \`${queue.repeatMode ? queue.repeatMode == 2 ? "Cola del servidor" : "Esta canción" : "Off"}\` | Autoplay: \`${queue.autoplay ? "On" : "Off"}\``;
 client.distube.on("playSong", (queue, song) => {
-    queue.connection.voice.setSelfDeaf(true);
+    queue.voice.setSelfDeaf(false);
     queue.textChannel.send(`**Escuchando** 🎶 \`${song.name}\` - \`${song.formattedDuration}\`\nSolicitado por: ${song.user}\n${status(queue)}`)
 });
 client.distube.on("addSong", (queue, song) => {
