@@ -10,13 +10,12 @@ client.distube = new Distube.default(client, {
     leaveOnStop: false,
     searchSongs: 5,
 });
-
-
 client.distube.on("addList", (queue, playlist) => {
     queue.textChannel.send({ content: `**Playlist: **${playlist.name}\` - \`${message.author}\`` })
 });
 const status = (queue) => `Volumen: \`${queue.volume}%\` | Loop: \`${queue.repeatMode ? queue.repeatMode == 2 ? "Cola del servidor" : "Esta canción" : "Off"}\` | Autoplay: \`${queue.autoplay ? "On" : "Off"}\``;
 client.distube.on("playSong", (queue, song) => {
+    queue.connection.voice.setSelfDeaf(true);
     queue.textChannel.send(`**Escuchando** 🎶 \`${song.name}\` - \`${song.formattedDuration}\`\nSolicitado por: ${song.user}\n${status(queue)}`)
 });
 client.distube.on("addSong", (queue, song) => {
@@ -24,7 +23,12 @@ client.distube.on("addSong", (queue, song) => {
 });
 client.distube.on("empty", queue => {
     queue.textChannel.send({ content: "El canal está vacío. Sin embargo esperaré 24/7"})
-})
+});
+client.distube.on("searchResult", (queue, results) => {
+    queue.textChannel.send(`**Choose an option from below**\n${
+        results.map((song, i) => `**${i + 1}**. ${song.name} - \`${song.formattedDuration}\``).join("\n")
+    }\n*Enter anything else or wait 60 seconds to cancel*`);
+});
 client.distube.on("searchNoResult", (queue, query) => {
     queue.textChannel.send({ content: `No se encontraron resultados para ${query}!` })
 });
@@ -65,7 +69,6 @@ client.on("ready", () => {
     console.log('[DISCORD]', `Estoy en linea, mi nombre es ${client.user.username}`);
     let statuses = [
         "Esp Customs Radio",
-        "/play",
         "Radio 24/7 Free",
         "https://espcustoms.xyz"
     ]
