@@ -24,11 +24,6 @@ client.distube.on("addSong", (queue, song) => {
 client.distube.on("empty", queue => {
     queue.textChannel.send({ content: "El canal está vacío. Sin embargo esperaré 24/7"})
 });
-client.distube.on("searchResult", (queue, results) => {
-    queue.textChannel.send(`**Choose an option from below**\n${
-        results.map((song, i) => `**${i + 1}**. ${song.name} - \`${song.formattedDuration}\``).join("\n")
-    }\n*Enter anything else or wait 60 seconds to cancel*`);
-});
 client.distube.on("searchNoResult", (queue, query) => {
     queue.textChannel.send({ content: `No se encontraron resultados para ${query}!` })
 });
