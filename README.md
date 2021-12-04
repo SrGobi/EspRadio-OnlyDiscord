@@ -6,21 +6,25 @@ No contiene base de datos para la obtencion y recuperacion de informacion, para 
 ![Discord](https://discordapp.com/api/guilds/597084607447564319/widget.png?style=banner2)
 
 
-[website]: https://esp-customs.herokuapp.com
+[bot]: https://espcustoms.xyz
+[website]: https://srgobi.com
+[youtube]: https://youtube.com/c/SrGobi
 [twitter]: https://twitter.com/SrgobiY
 [discord]: https://discord.gg/cqrN3Eg
 [twitch]: https://www.twitch.tv/srgobiy
 [patreon]: https://www.patreon.com/espcustoms
 [instagram]: https://www.instagram.com/srgobi_oficial/
 
-### Sígueme:
+### Follow me:
 
-[<img align="left" alt="snazzah.com" width="32px" src="https://api.iconify.design/emojione:globe-showing-europe-africa.svg?&height=32" />][website]
+[<img align="left" alt="Website" width="32px" src="https://api.iconify.design/noto-v1:robot.svg?&height=32" />][bot]
+[<img align="left" alt="Website" width="32px" src="https://api.iconify.design/emojione:globe-showing-europe-africa.svg?&height=32" />][website]
+[<img align="left" alt="Youtube" width="36px" src="https://api.iconify.design/logos:youtube-icon.svg?&height=36" />][youtube]
 [<img align="left" alt="Twitter" width="32px" src="https://api.iconify.design/logos:twitter.svg?&height=32" />][twitter]
-[<img align="left" alt="Discord" width="32px" src="https://api.iconify.design/logos:discord-icon.svg?&height=32" />][discord]
+[<img align="left" alt="Discord" width="36px" src="https://api.iconify.design/logos:discord-icon.svg?&height=36" />][discord]
 [<img align="left" alt="Twitch" width="32px" src="https://api.iconify.design/logos:twitch.svg?&height=32" />][twitch]
 [<img align="left" alt="Patreon" width="32px" src="https://api.iconify.design/logos:patreon.svg?&height=32" />][patreon]
-[<img align="left" alt="Instagram" width="32px" src="https://api.iconify.design/akar-icons:instagram-fill.svg?&height=32" />][instagram]
+[<img align="left" alt="Instagram" width="32px" src="https://api.iconify.design/mdi:instagram.svg?color=white&height=32" />][instagram]
 
 <br /><br />
 
