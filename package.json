@@ -27,7 +27,7 @@
     "dotenv": "^10.0.0",
     "dotenv-flow": "^3.2.0",
     "ffmpeg": "0.0.4",
-    "ffmpeg-static": "^4.4.0",
+    "ffmpeg-static": "^5.1.0",
     "fs": "0.0.1-security",
     "libsodium-wrappers": "^0.7.9",
     "tweetnacl": "^1.0.3",
